@@ -6,7 +6,7 @@
   },
   "spec": {
     "namespace": "default",
-    "apiServer": "https://127.0.0.1:44593",
+    "apiServer": "https://127.0.0.1:6443",
     "injectLabels": true,
     "resourceDefaults": {},
     "expectVersions": {}

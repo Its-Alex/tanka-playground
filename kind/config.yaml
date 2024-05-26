@@ -5,3 +5,5 @@ nodes:
 - role: control-plane
   # Kubernetes version
   image: kindest/node:v1.29.2
+networking:
+  apiServerPort: 6443
