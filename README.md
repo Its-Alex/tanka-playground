@@ -27,16 +27,6 @@ $ kind create cluster --config ./kind/config.yaml
 $ kind get kubeconfig --name local > .kubeconfig/default
 ```
 
-Update [`tanka`](https://tanka.dev/) `apiServer` for
-[`default environment`](/tanka/environments/default) in
-[tanka/environments/default/spec.json#9](/tanka/environments/default/spec.json#9)
-with the value return by the following command:
-
-```sh
-$ cat .kubeconfig/default | grep server | cut -d' ' -f6
-https://127.0.0.1:44593
-```
-
 ## Deploy with tanka
 
 Move to [`tanka folder`](/tanka/) and install jsonnet dependencies:
@@ -46,8 +36,15 @@ $ cd tanka
 $ jb install
 ```
 
-Apply [`default environment`](/tanka/environments/default) to
+Make sure that direnv is load with the kubeconfig:
+
+```sh
+$ direnv reload
+```
+
+Finally, apply [`default environment`](/tanka/environments/default) to
 [`kind`](https://kind.sigs.k8s.io/) cluster:
+
 
 ```sh
 $ tk apply tanka/environments/default/
